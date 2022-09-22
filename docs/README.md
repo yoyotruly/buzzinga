@@ -29,6 +29,8 @@
 
 ## Architecture
 
+![architecture](images/architecture.png)
+
 ## ERD
 
 ## Planned Routes
