@@ -23,6 +23,8 @@
 
 ## Information Architecture
 
+![information-architecture](images/information_architecture.png)
+
 ## User Flow
 
 ![user-flow](images/user_flow.png)
