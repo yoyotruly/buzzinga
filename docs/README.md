@@ -5,9 +5,9 @@
 - [User Stories](#user-stories)
 - [Information Architecture](#information-architecture)
 - [User Flow](#user-flow)
-- [Wireframes](#wireframes)
 - [Architecture](#architecture)
 - [ERD](#erd)
+- [Wireframes](#wireframes)
 - [Planned Routes](#planned-routes)
 
 ## User Stories
@@ -25,12 +25,14 @@
 
 ## User Flow
 
-## Wireframes
+![user-flow](images/user_flow.png)
 
 ## Architecture
 
 ![architecture](images/architecture.png)
 
 ## ERD
+
+## Wireframes
 
 ## Planned Routes
