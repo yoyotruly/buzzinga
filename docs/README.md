@@ -36,6 +36,8 @@
 
 ## ERD
 
+![erd](images/erd.png)
+
 ## Wireframes
 
 ## Planned Routes
