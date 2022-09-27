@@ -40,4 +40,21 @@
 
 ## Wireframes
 
+### Home Page
+
+![home](images/wireframes/home.png)
+
+### Products Page
+
+![products](images/wireframes/products.png)
+
+### Product Details Page
+
+![product-details](images/wireframes/product_details.png)
+
 ## Planned Routes
+
+`/` Home  
+`/products` Products  
+`/products/[id]` Product details  
+`/tasting-profile/[id]` User tasting profile
