@@ -8,6 +8,8 @@ export default function Nav() {
         <li><Link href="/products">Products</Link></li>
         <li><Link href="/about">About Me</Link></li>
         <li><Link href="/contacts">Contacts</Link></li>
+        <li>Sign Up</li>
+        <li>Log In</li>
       </ul>
     </nav>
   );
