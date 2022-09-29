@@ -1,22 +1,22 @@
-import { Container, Link, Spacer, useTheme } from "@nextui-org/react";
+import { Container, Link, Row, Spacer, useTheme } from "@nextui-org/react";
 
 export default function Footer() {
   const { theme } = useTheme();
 
   return (
     <Container
+      as="footer"
       fluid
       display="flex"
       alignItems="center"
       css={{
+        height: "50px",
         borderTop: "$borderWeights$light solid $colors$border",
         fontSize: "$sm",
-        height: "50px",
       }}
     >
       <Link
         href="https://github.com/yoyotruly/buzzinga"
-        block
         color="text"
         target="_blank"
       >
@@ -27,7 +27,6 @@ export default function Footer() {
 
       <Link
         href="https://www.linkedin.com/in/yoyoyangca/"
-        block
         color="text"
         target="_blank"
       >
