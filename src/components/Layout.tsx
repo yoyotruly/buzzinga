@@ -5,7 +5,7 @@ import { Box } from "./Box";
 
 export default function Layout({ children }) {
   return (
-    <Box css={{ maxW: "100%" }}>
+    <Box css={{ width: "100%" }}>
       <Head>
         <title>Buzzinga</title>
         <meta name="description" content="Find what to drink next" />
