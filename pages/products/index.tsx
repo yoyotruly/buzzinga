@@ -105,17 +105,12 @@ export default function Products() {
 
       <Box css={{ flexGrow: 1 }}>
         <h1>Products List</h1>
-        {productElements}
         <div>
           <Link href="/products/[pid]" as={"/products/1"}>
             Product card 1
           </Link>
         </div>
-        <div>
-          <Link href="/products/[pid]" as={"/products/2"}>
-            Product card 2
-          </Link>
-        </div>
+        {productElements}
       </Box>
     </Box>
   );
