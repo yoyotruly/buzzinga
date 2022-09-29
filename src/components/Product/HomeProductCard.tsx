@@ -1,6 +1,6 @@
 import { Container } from "@nextui-org/react";
 
-export default function ProductCard() {
+export default function HomeProductCard() {
   return (
     <Container
       css={{
