@@ -7,13 +7,17 @@ export default function Nav() {
   const { isDark, type } = useTheme();
 
   return (
-    <Navbar isBordered variant="sticky" maxWidth="fluid">
+    <Navbar
+      variant="sticky"
+      maxWidth="fluid"
+      css={{ borderBottom: "$borderWeights$light solid $colors$border" }}
+    >
       <Navbar.Brand>
         <NextLink href="/">
-          <Link>Buzzinga</Link>
+          <Link color="secondary">Buzzinga</Link>
         </NextLink>
       </Navbar.Brand>
-      <Navbar.Content activeColor="primary" variant="underline">
+      <Navbar.Content activeColor="secondary" variant="underline">
         <NextLink href="/products">
           <Navbar.Link isActive href="/products">
             Products
