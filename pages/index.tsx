@@ -1,19 +1,29 @@
+import { Button } from "@nextui-org/react";
+import { Box } from "../src/components/Box";
+
 export default function Home() {
   return (
-    <>
-      <main>
-        This is the main section
+    <Box
+      css={{
+        display: "flex",
+        width: "100%",
+        height: "100%",
+        justifyContent: "space-between",
+        alignItems: "center",
+        backgroundColor: "yellow",
+      }}
+    >
+      <Box>
         <h1>Tag line</h1>
         <p>Some text</p>
-        <button>Go Explore</button>
-      </main>
-      
-      <aside>
-        This is the side section
-        <div>Product card 1</div>
+        <Button>Go Explore</Button>
+      </Box>
+
+      <Box css={{ display: "flex", alignItems: "center" }}>
+        <Box css={{ backgroundColor: "tomato" }}>Product card 1</Box>
         <button>Next</button>
-        <div>Product card 2</div>
-      </aside>
-    </>
+        <Box>Product card 2</Box>
+      </Box>
+    </Box>
   );
 }

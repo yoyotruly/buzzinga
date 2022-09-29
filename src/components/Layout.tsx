@@ -1,10 +1,11 @@
 import Head from "next/head";
 import Nav from "./Nav";
 import Footer from "./Footer";
+import { Box } from "./Box";
 
 export default function Layout({ children }) {
   return (
-    <div>
+    <Box css={{ width: "100%" }}>
       <Head>
         <title>Buzzinga</title>
         <meta name="description" content="Find what to drink next" />
@@ -12,10 +13,8 @@ export default function Layout({ children }) {
       </Head>
 
       <Nav />
-
-      <div>{ children }</div>
-
+      {children}
       <Footer />
-    </div>
+    </Box>
   );
 }
