@@ -1,6 +1,6 @@
 import { Grid, Spacer } from "@nextui-org/react";
 import HomeHero from "../src/components/HomeHero";
-import ProductCard from "../src/components/ProductCard";
+import HomeProductCard from "../src/components/Product/HomeProductCard";
 
 export default function Home() {
   return (
@@ -12,12 +12,12 @@ export default function Home() {
       <Spacer x={2} />
 
       <Grid xs={2}>
-        <ProductCard />
+        <HomeProductCard />
         <button>Next</button>
       </Grid>
 
       <Grid xs={2}>
-        <ProductCard />
+        <HomeProductCard />
       </Grid>
     </Grid.Container>
   );
