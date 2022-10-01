@@ -1,4 +1,4 @@
-import { objectType } from "nexus";
+import { extendType, objectType } from "nexus";
 
 export const Product = objectType({
   name: "Product",
@@ -8,5 +8,17 @@ export const Product = objectType({
     t.string("description");
     t.string("image");
     t.float("price");
+  },
+});
+
+export const ProductsQuery = extendType({
+  type: "Query",
+  definition(t) {
+    t.nonNull.list.field("products", {
+      type: "Product",
+      resolve(_parent, _args, ctx) {
+        return ctx.prisma.product.findMany();
+      },
+    });
   },
 });
