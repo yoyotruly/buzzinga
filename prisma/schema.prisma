@@ -23,9 +23,9 @@ model Favorite {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    Int
-  product   Product  @relation(fields: [productId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId Int
   wishlist  Boolean  @default(false)
 }
@@ -36,14 +36,14 @@ model Product {
   updatedAt     DateTime     @updatedAt
   name          String
   image         String?
-  price         Int?
+  price         Float?
   volume        Int?
   volumeUom     String?
   description   String?
   details       String?
-  category      Category     @relation(fields: [categoryId], references: [id])
+  category      Category     @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId    Int
-  subCategory   SubCategory? @relation(fields: [subCategoryId], references: [id])
+  subCategory   SubCategory? @relation(fields: [subCategoryId], references: [id], onDelete: Cascade)
   subCategoryId Int?
   favorites     Favorite[]
 }
@@ -58,7 +58,7 @@ model Category {
 model SubCategory {
   id         Int       @id @default(autoincrement())
   name       String    @unique
-  category   Category  @relation(fields: [categoryId], references: [id])
+  category   Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId Int
   products   Product[]
 }
