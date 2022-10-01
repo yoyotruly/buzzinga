@@ -1,6 +1,9 @@
+import { ApolloProvider } from "@apollo/client";
+import apolloClient from "../lib/apollo";
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import Layout from "../src/components/Layout";
+import Head from "next/head";
+import Layout from "../src/components/Layout/Layout";
 
 const lightTheme = createTheme({
   type: "light",
@@ -21,9 +24,16 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <NextUIProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Head>
+          <title>Buzzinga</title>
+          <meta name="description" content="Find what to drink next" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <ApolloProvider client={apolloClient}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloProvider>
       </NextUIProvider>
     </NextThemesProvider>
   );

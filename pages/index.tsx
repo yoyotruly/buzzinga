@@ -1,29 +1,24 @@
-import { Button } from "@nextui-org/react";
-import { Box } from "../src/components/Box";
+import { Grid, Spacer } from "@nextui-org/react";
+import HomeHero from "../src/components/HomeHero";
+import HomeProductCard from "../src/components/Product/HomeProductCard";
 
 export default function Home() {
   return (
-    <Box
-      css={{
-        display: "flex",
-        width: "100%",
-        height: "100%",
-        justifyContent: "space-between",
-        alignItems: "center",
-        backgroundColor: "yellow",
-      }}
-    >
-      <Box>
-        <h1>Tag line</h1>
-        <p>Some text</p>
-        <Button>Go Explore</Button>
-      </Box>
+    <Grid.Container wrap="nowrap">
+      <Grid xs>
+        <HomeHero />
+      </Grid>
 
-      <Box css={{ display: "flex", alignItems: "center" }}>
-        <Box css={{ backgroundColor: "tomato" }}>Product card 1</Box>
+      <Spacer x={2} />
+
+      <Grid xs={2}>
+        <HomeProductCard />
         <button>Next</button>
-        <Box>Product card 2</Box>
-      </Box>
-    </Box>
+      </Grid>
+
+      <Grid xs={2}>
+        <HomeProductCard />
+      </Grid>
+    </Grid.Container>
   );
 }

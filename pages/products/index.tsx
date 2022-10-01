@@ -1,117 +1,46 @@
-import { Button, Card, Grid, Spacer, Text } from "@nextui-org/react";
-import Link from "next/link";
-import { Box } from "../../src/components/Box";
+import { gql, useQuery } from "@apollo/client";
+import { Container, Grid } from "@nextui-org/react";
+import FilterGroup from "../../src/components/SideNav/FilterGroup";
+import ProductCard from "../../src/components/Product/ProductCard";
 
-const createFilterElements = (filters) => {
-  return (
-    <Grid.Container gap={1}>
-      {filters.map((filter) => (
-        <Grid key={filter}>
-          <Button size="sm" bordered color="primary" rounded auto ghost>
-            {filter}
-          </Button>
-        </Grid>
-      ))}
-    </Grid.Container>
-  );
-};
-
-const createProductCards = (products) => {
-  return (
-    <Grid.Container gap={3}>
-      {products.map((product) => (
-        <Grid key={product}>
-          <Card
-            isPressable
-            isHoverable
-            variant="flat"
-            css={{ width: "250px", height: "350px" }}
-          >
-            <Card.Body>
-              <Text>{product}</Text>
-            </Card.Body>
-          </Card>
-        </Grid>
-      ))}
-    </Grid.Container>
-  );
-};
+const ProductsQuery = gql`
+  query {
+    products {
+      id
+      name
+      description
+    }
+  }
+`;
 
 export default function Products() {
-  const categoryElements = createFilterElements([
-    "Beer",
-    "Cider",
-    "Wine",
-    "Spirits",
-  ]);
+  const { loading, error, data } = useQuery(ProductsQuery);
 
-  const subcategoryElements = createFilterElements([
-    "Lager",
-    "Ale",
-    "Stout",
-    "IPA",
-    "Cider",
-    "Red Wine",
-    "White Wine",
-    "Rose Wine",
-    "Vodka",
-    "Gin",
-    "Rum",
-    "Whiskey",
-  ]);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Oops, something went wrong {error.message}</p>;
 
-  const productElements = createProductCards([
-    "Product 1",
-    "Product 2",
-    "Product 3",
-    "Product 4",
-    "Product 5",
-    "Product 6",
-    "Product 7",
-    "Product 8",
-    "Product 9",
-    "Product 10",
-  ]);
+  const productElements = (
+    <Grid.Container gap={1}>
+      {data?.products.map((product) => (
+        <Grid key={product.id}>
+          <ProductCard id={product.id} name={product.name} />
+        </Grid>
+      ))}
+    </Grid.Container>
+  );
 
   return (
-    <Box
-      css={{
-        display: "flex",
-        width: "90%",
-        margin: "auto",
-        justifyContent: "space-between",
-      }}
-    >
-      <Box css={{ maxW: "350px" }}>
-        <section>
-          <h2>Category</h2>
-          {categoryElements}
-        </section>
-        <section>
-          <h2>Sub-Category</h2>
-          {subcategoryElements}
-        </section>
-        <section>
-          <h2>Price Range</h2>
-          <div>Slider</div>
-        </section>
-        <section>
-          <h2>Sugar Content</h2>
-          <div>Slider</div>
-        </section>
-      </Box>
+    <Grid.Container wrap="nowrap">
+      <Grid xs={2.5}>
+        <FilterGroup />
+      </Grid>
 
-      <Spacer x={2} />
-
-      <Box css={{ flexGrow: 1 }}>
-        <h1>Products List</h1>
-        <div>
-          <Link href="/products/[pid]" as={"/products/1"}>
-            Product card 1
-          </Link>
-        </div>
-        {productElements}
-      </Box>
-    </Box>
+      <Grid xs>
+        <Container>
+          <h1>Products List</h1>
+          {productElements}
+        </Container>
+      </Grid>
+    </Grid.Container>
   );
 }
