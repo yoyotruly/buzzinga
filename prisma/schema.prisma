@@ -40,7 +40,10 @@ model Product {
   volume        Int?
   volumeUom     String?
   description   String?
-  details       String?
+  alcohol       Float?
+  sugar         Float?
+  madeIn        String?
+  brand         String?
   category      Category     @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId    Int
   subCategory   SubCategory? @relation(fields: [subCategoryId], references: [id], onDelete: Cascade)
