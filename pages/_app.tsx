@@ -1,3 +1,5 @@
+import { ApolloProvider } from "@apollo/client";
+import apolloClient from "../lib/apollo";
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import Head from "next/head";
@@ -27,9 +29,11 @@ function MyApp({ Component, pageProps }) {
           <meta name="description" content="Find what to drink next" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ApolloProvider client={apolloClient}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloProvider>
       </NextUIProvider>
     </NextThemesProvider>
   );
