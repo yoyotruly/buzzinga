@@ -8,7 +8,7 @@ const CategoriesQuery = gql`
       id
       name
     }
-    subcategories {
+    subCategories {
       id
       name
     }
@@ -21,8 +21,6 @@ export default function FilterGroup() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Oops, something went wrong {error.message}</p>;
 
-  console.log(data);
-
   return (
     <Grid.Container alignContent="flex-start" css={{ gap: "$13" }}>
       <Grid>
@@ -31,7 +29,7 @@ export default function FilterGroup() {
       </Grid>
       <Grid>
         <Text h3>Sub Categories</Text>
-        <MultiSelect categories={data?.subcategories} />
+        <MultiSelect categories={data?.subCategories} />
       </Grid>
       <Grid>
         <Text h3>Alcohol Content</Text>
