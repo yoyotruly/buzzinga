@@ -1,5 +1,5 @@
 import { Button, Grid, Text } from "@nextui-org/react";
-import { activeColor } from "../Utilities/constants";
+import { activeColor } from "../../utilities/constants";
 
 function Select({ name }) {
   return (

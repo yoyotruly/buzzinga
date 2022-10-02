@@ -3,7 +3,7 @@ import { Container, Grid } from "@nextui-org/react";
 import FilterGroup from "../../src/components/SideNav/FilterGroup";
 import ProductCard from "../../src/components/Product/ProductCard";
 import Link from "next/link";
-import { productGridGap } from "../../src/components/Utilities/constants";
+import { productGridGap } from "../../src/utilities/constants";
 
 const ProductsQuery = gql`
   query {

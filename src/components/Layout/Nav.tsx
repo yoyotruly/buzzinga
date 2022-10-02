@@ -2,7 +2,7 @@ import { useTheme as useNextTheme } from "next-themes";
 import { Navbar, Link, Switch, useTheme } from "@nextui-org/react";
 import NextLink from "next/link";
 import Box from "../Utilities/Box.styled";
-import { border, activeColor } from "../Utilities/constants";
+import { border, activeColor } from "../../utilities/constants";
 
 export default function Nav() {
   const { setTheme } = useNextTheme();

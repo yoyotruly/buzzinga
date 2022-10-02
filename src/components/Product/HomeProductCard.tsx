@@ -1,5 +1,5 @@
 import { Container } from "@nextui-org/react";
-import { border } from "../Utilities/constants";
+import { border } from "../../utilities/constants";
 
 export default function HomeProductCard() {
   return (

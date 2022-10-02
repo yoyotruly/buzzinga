@@ -3,7 +3,7 @@ import {
   border,
   productCardHeight,
   productCardWidth,
-} from "../Utilities/constants";
+} from "../../utilities/constants";
 
 export default function ProductCard({ product }) {
   return (

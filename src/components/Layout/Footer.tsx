@@ -1,6 +1,6 @@
 import { Container, Link, Spacer, useTheme } from "@nextui-org/react";
 import Box from "../Utilities/Box.styled";
-import { border, footerHeight } from "../Utilities/constants";
+import { border, footerHeight } from "../../utilities/constants";
 
 export default function Footer() {
   const { theme } = useTheme();
