@@ -2,13 +2,15 @@ import { gql, useQuery } from "@apollo/client";
 import { Container, Grid } from "@nextui-org/react";
 import FilterGroup from "../../src/components/SideNav/FilterGroup";
 import ProductCard from "../../src/components/Product/ProductCard";
+import Link from "next/link";
+import { productGridGap } from "../../src/components/Utilities/constants";
 
 const ProductsQuery = gql`
   query {
     products {
       id
       name
-      description
+      image
     }
   }
 `;
@@ -20,26 +22,29 @@ export default function Products() {
   if (error) return <p>Oops, something went wrong {error.message}</p>;
 
   const productElements = (
-    <Grid.Container gap={1}>
+    <Grid.Container gap={productGridGap}>
       {data?.products.map((product) => (
-        <Grid key={product.id}>
-          <ProductCard id={product.id} name={product.name} />
-        </Grid>
+        <Link
+          key={product.id}
+          href="/products/[pid]"
+          as={`/products/${product.id}`}
+        >
+          <Grid>
+            <ProductCard product={product} />
+          </Grid>
+        </Link>
       ))}
     </Grid.Container>
   );
 
   return (
-    <Grid.Container wrap="nowrap">
-      <Grid xs={2.5}>
+    <Grid.Container wrap="nowrap" css={{ padding: "$13 0" }}>
+      <Grid as="section" xs={2.5}>
         <FilterGroup />
       </Grid>
 
-      <Grid xs>
-        <Container>
-          <h1>Products List</h1>
-          {productElements}
-        </Container>
+      <Grid as="section" xs>
+        <Container css={{ paddingRight: 0 }}>{productElements}</Container>
       </Grid>
     </Grid.Container>
   );
