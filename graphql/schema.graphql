@@ -2,16 +2,65 @@
 ### Do not make changes to this file directly
 
 
-type Product {
-  description: String
+type Category {
   id: String
+  name: String
+}
+
+type Edge {
+  cursor: String
+  node: Product
+}
+
+type Favorite {
+  id: Int
+  product: String
+  productId: Int
+  user: String
+  userId: Int
+  wishlist: Boolean
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean
+}
+
+type Product {
+  alcohol: Float
+  brand: String
+  category: String
+  categoryId: Int
+  description: String
+  favorites: [Favorite]
+  id: Int
   image: String
+  madeIn: String
   name: String
   price: Float
+  subCategory: String
+  subCategoryId: Int
+  sugar: Float
+  volume: Int
+  volumeUom: String
+}
+
+type ProductConnection {
+  edges: [Edge]
+  pageInfo: PageInfo
 }
 
 type Query {
-  products: [Product]!
+  categories: [Category]!
+  favoritesByUserId(userId: Int): [Favorite]
+  products(after: String, first: Int): ProductConnection
+  subCategories: [SubCategory]!
+  subCategoriesByCategoryId(categoryId: Int): [SubCategory]
+}
+
+type SubCategory {
+  id: String
+  name: String
 }
 
 type User {
