@@ -9,14 +9,14 @@ export default function Home() {
         <HomeHero />
       </Grid>
 
-      <Spacer x={2} />
+      <Spacer x={8} />
 
       <Grid xs={2}>
         <HomeProductCard />
         <button>Next</button>
       </Grid>
 
-      <Grid xs={2}>
+      <Grid xs={2.5}>
         <HomeProductCard />
       </Grid>
     </Grid.Container>
