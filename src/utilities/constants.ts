@@ -1,6 +1,5 @@
-const footerHeight = "50px";
+const footerHeight = "76px";
 const border = "$borderWeights$light solid $colors$border";
-const productFilterWidth = "350px";
 const productCardWidth = "245px";
 const productCardHeight = "350px";
 const productGridGap = 1.7;
