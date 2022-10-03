@@ -1,4 +1,4 @@
-import { Button, Container, Link, Spacer, Text } from "@nextui-org/react";
+import { Container, Spacer, Text } from "@nextui-org/react";
 import NextLink from "next/link";
 
 export default function HomeHero() {
