@@ -5,6 +5,8 @@
 type Category {
   id: Int
   name: String
+  products: [Product]
+  subCategories: [SubCategory]
 }
 
 type Edge {
@@ -61,17 +63,21 @@ type Query {
 }
 
 type SubCategory {
+  category: Category
+  categoryId: Int
   id: Int
   name: String
+  products: [Product]
 }
 
 type User {
   createdAt: String
   email: String
-  favorites: [Product]
+  favoriteProducts: [Favorite]
   id: Int
   name: String
   updatedAt: String
+  wishlistProducts: [Wishlist]
 }
 
 type Wishlist {
