@@ -11,25 +11,14 @@ export const Product = objectType({
     t.string("volumeUom");
     t.string("description");
     t.float("alcohol");
-    t.float("sugar");
     t.string("madeIn");
-    t.string("brand");
+    t.string("by");
     t.string("category");
     t.int("categoryId");
     t.string("subCategory");
     t.int("subCategoryId");
-    t.list.field("favorites", {
-      type: "Favorite",
-      resolve: (parent, _args, ctx) => {
-        return ctx.prisma.product
-          .findUnique({
-            where: {
-              id: parent.id,
-            },
-          })
-          .favorites();
-      },
-    });
+    t.list.field("favoriteUsers", { type: "Favorite" });
+    t.list.field("wishlistUsers", { type: "Wishlist" });
   },
 });
 

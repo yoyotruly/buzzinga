@@ -26,11 +26,11 @@ type PageInfo {
 
 type Product {
   alcohol: Float
-  brand: String
+  by: String
   category: String
   categoryId: Int
   description: String
-  favorites: [Favorite]
+  favoriteUsers: [Favorite]
   id: Int
   image: String
   madeIn: String
@@ -38,9 +38,9 @@ type Product {
   price: Float
   subCategory: String
   subCategoryId: Int
-  sugar: Float
   volume: Int
   volumeUom: String
+  wishlistUsers: [Wishlist]
 }
 
 type ProductConnection {
