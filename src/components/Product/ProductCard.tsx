@@ -1,4 +1,4 @@
-import { Card, Text, Col, Row, Button } from "@nextui-org/react";
+import { Card, Text, Row } from "@nextui-org/react";
 import {
   border,
   productCardHeight,
