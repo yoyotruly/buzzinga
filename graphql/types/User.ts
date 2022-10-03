@@ -1,4 +1,4 @@
-import { objectType } from "nexus";
+import { extendType, objectType } from "nexus";
 import { Product } from "./Product";
 
 export const User = objectType({
@@ -19,6 +19,23 @@ export const User = objectType({
             },
           })
           .favorites();
+      },
+    });
+  },
+});
+
+export const CurrentUserQuery = extendType({
+  type: "Query",
+  definition(t) {
+    t.field("currentUser", {
+      type: "User",
+      args: { id: "Int" },
+      resolve(_parent, args, ctx) {
+        return ctx.prisma.user.findUnique({
+          where: {
+            id: args.id,
+          },
+        });
       },
     });
   },
