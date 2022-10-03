@@ -1,8 +1,9 @@
-import { Button, Grid } from "@nextui-org/react";
+import { Button, Grid, Text } from "@nextui-org/react";
+import { activeColor } from "../../utilities/constants";
 
 function Select({ name }) {
   return (
-    <Button size="sm" bordered color="secondary" rounded auto>
+    <Button size="sm" bordered color={activeColor} rounded ghost auto>
       {name}
     </Button>
   );
@@ -10,9 +11,12 @@ function Select({ name }) {
 
 export default function MultiSelect({ categories }) {
   return (
-    <Grid.Container gap={0.5}>
+    <Grid.Container>
       {categories.map((category) => (
-        <Grid key={category.id}>
+        <Grid
+          key={category.id}
+          css={{ paddingRight: "$3", paddingBottom: "$3" }}
+        >
           <Select name={category.name} />
         </Grid>
       ))}

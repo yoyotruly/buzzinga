@@ -1,37 +1,38 @@
-import { Container, Link, Row, Spacer, useTheme } from "@nextui-org/react";
+import { Container, Link, Spacer, useTheme } from "@nextui-org/react";
+import Box from "../Utilities/Box.styled";
+import { border, footerHeight } from "../../utilities/constants";
 
 export default function Footer() {
   const { theme } = useTheme();
 
   return (
-    <Container
-      as="footer"
-      fluid
-      display="flex"
-      alignItems="center"
+    <Box
       css={{
-        height: "50px",
-        borderTop: "$borderWeights$light solid $colors$border",
+        height: footerHeight,
+        borderTop: border,
         fontSize: "$sm",
+        display: "flex",
       }}
     >
-      <Link
-        href="https://github.com/yoyotruly/buzzinga"
-        color="text"
-        target="_blank"
-      >
-        GitHub
-      </Link>
+      <Container as="footer" xl display="flex" alignItems="center">
+        <Link
+          href="https://github.com/yoyotruly/buzzinga"
+          color="text"
+          target="_blank"
+        >
+          GitHub
+        </Link>
 
-      <Spacer />
+        <Spacer />
 
-      <Link
-        href="https://www.linkedin.com/in/yoyoyangca/"
-        color="text"
-        target="_blank"
-      >
-        LinkedIn
-      </Link>
-    </Container>
+        <Link
+          href="https://www.linkedin.com/in/yoyoyangca/"
+          color="text"
+          target="_blank"
+        >
+          LinkedIn
+        </Link>
+      </Container>
+    </Box>
   );
 }

@@ -1,11 +1,12 @@
 import { Container } from "@nextui-org/react";
+import { border } from "../../utilities/constants";
 
 export default function HomeProductCard() {
   return (
     <Container
       css={{
-        borderLeft: "1px solid black",
-        borderRight: "1px solid black",
+        borderLeft: border,
+        borderRight: border,
       }}
     >
       Product Card

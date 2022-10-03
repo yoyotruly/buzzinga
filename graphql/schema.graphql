@@ -2,21 +2,87 @@
 ### Do not make changes to this file directly
 
 
+type Category {
+  id: Int
+  name: String
+  products: [Product]
+  subCategories: [SubCategory]
+}
+
+type Edge {
+  cursor: String
+  node: Product
+}
+
+type Favorite {
+  product: Product
+  productId: Int
+  user: User
+  userId: Int
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean
+}
+
 type Product {
+  alcohol: Float
+  by: String
+  category: String
+  categoryId: Int
   description: String
-  id: String
+  favoriteUsers: [Favorite]
+  id: Int
   image: String
+  madeIn: String
   name: String
   price: Float
+  subCategory: String
+  subCategoryId: Int
+  volume: Int
+  volumeUom: String
+  wishlistUsers: [Wishlist]
+}
+
+type ProductConnection {
+  edges: [Edge]
+  pageInfo: PageInfo
 }
 
 type Query {
-  products: [Product]!
+  categories: [Category]!
+  currentUser(id: Int): User
+  favorites: [Favorite]
+  favoritesByUserId(userId: Int): [Favorite]
+  products(after: Int, first: Int): ProductConnection
+  subCategories: [SubCategory]!
+  subCategoriesByCategoryId(categoryId: Int): [SubCategory]
+  wishlistByUserId(userId: Int): [Wishlist]
+  wishlists: [Wishlist]
+}
+
+type SubCategory {
+  category: Category
+  categoryId: Int
+  id: Int
+  name: String
+  products: [Product]
 }
 
 type User {
+  createdAt: String
   email: String
-  favorites: [Product]
-  id: String
+  favoriteProducts: [Favorite]
+  id: Int
   name: String
+  updatedAt: String
+  wishlistProducts: [Wishlist]
+}
+
+type Wishlist {
+  product: Product
+  productId: Int
+  user: User
+  userId: Int
 }

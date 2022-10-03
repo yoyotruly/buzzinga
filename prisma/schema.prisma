@@ -11,23 +11,13 @@ datasource db {
 }
 
 model User {
-  id        Int        @id @default(autoincrement())
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  email     String     @unique
-  name      String?
-  favorites Favorite[]
-}
-
-model Favorite {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    Int
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId Int
-  wishlist  Boolean  @default(false)
+  id               Int        @id @default(autoincrement())
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  email            String     @unique
+  name             String?
+  favoriteProducts Favorite[]
+  wishlistProducts Wishlist[]
 }
 
 model Product {
@@ -41,14 +31,14 @@ model Product {
   volumeUom     String?
   description   String?
   alcohol       Float?
-  sugar         Float?
   madeIn        String?
-  brand         String?
+  by            String?
   category      Category     @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId    Int
   subCategory   SubCategory? @relation(fields: [subCategoryId], references: [id], onDelete: Cascade)
   subCategoryId Int?
-  favorites     Favorite[]
+  favoriteUsers Favorite[]
+  wishlistUsers Wishlist[]
 }
 
 model Category {
@@ -64,4 +54,24 @@ model SubCategory {
   category   Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId Int
   products   Product[]
+}
+
+model Favorite {
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId Int
+  createdAt DateTime @default(now())
+
+  @@id([userId, productId])
+}
+
+model Wishlist {
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId Int
+  createdAt DateTime @default(now())
+
+  @@id([userId, productId])
 }

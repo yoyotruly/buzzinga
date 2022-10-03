@@ -1,19 +1,43 @@
-import { Card, Text } from "@nextui-org/react";
-import Link from "next/link";
+import { Card, Text, Col, Row, Button } from "@nextui-org/react";
+import {
+  border,
+  productCardHeight,
+  productCardWidth,
+} from "../../utilities/constants";
 
-export default function ProductCard({ id, name }) {
+export default function ProductCard({ product }) {
   return (
     <Card
       isPressable
       isHoverable
-      variant="flat"
-      css={{ width: "230px", height: "320px" }}
+      css={{ width: productCardWidth, height: productCardHeight }}
     >
-      <Link href="/products/[pid]" as={`/products/${id}`}>
-        <Card.Body>
-          <Text>{name}</Text>
-        </Card.Body>
-      </Link>
+      <Card.Body css={{ padding: 0 }}>
+        <Card.Image
+          src={product.image}
+          objectFit="cover"
+          width="100%"
+          height="100%"
+          alt={product.name}
+        />
+      </Card.Body>
+      <Card.Footer
+        isBlurred
+        css={{
+          position: "absolute",
+          height: "20%",
+          bgBlur: "#0f111466",
+          borderTop: border,
+          bottom: 0,
+          zIndex: 1,
+        }}
+      >
+        <Row>
+          <Text color="#d1d1d1" size={14}>
+            {product.name}
+          </Text>
+        </Row>
+      </Card.Footer>
     </Card>
   );
 }
