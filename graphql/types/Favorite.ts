@@ -3,12 +3,27 @@ import { extendType, objectType } from "nexus";
 export const Favorite = objectType({
   name: "Favorite",
   definition(t) {
-    t.int("id");
-    t.string("user");
+    t.field("user", { type: "User" });
     t.int("userId");
-    t.string("product");
+    t.field("product", { type: "Product" });
     t.int("productId");
-    t.boolean("wishlist");
+  },
+});
+
+export const getAllFavorites = extendType({
+  type: "Query",
+  definition(t) {
+    t.list.field("favorites", {
+      type: "Favorite",
+      resolve(_parent, _args, ctx) {
+        return ctx.prisma.favorite.findMany({
+          include: {
+            user: true,
+            product: true,
+          },
+        });
+      },
+    });
   },
 });
 
@@ -24,13 +39,8 @@ export const getFavoritesByUserId = extendType({
             userId: args.userId,
           },
           include: {
-            product: {
-              select: {
-                // id: true,
-                name: true,
-                // image: true,
-              },
-            },
+            user: true,
+            product: true,
           },
         });
       },
