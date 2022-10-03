@@ -25,15 +25,13 @@ export default function Nav() {
         </Navbar.Brand>
         <Navbar.Content activeColor={activeColor} variant="underline">
           <NextLink href="/products">
-            <Navbar.Link isActive href="/products">
-              Products
-            </Navbar.Link>
+            <Navbar.Link isActive>Products</Navbar.Link>
           </NextLink>
           <NextLink href="/about">
             <Navbar.Link>About</Navbar.Link>
           </NextLink>
           <NextLink href="/contacts">
-            <Navbar.Link href="/contacts">Contacts</Navbar.Link>
+            <Navbar.Link>Contacts</Navbar.Link>
           </NextLink>
         </Navbar.Content>
         <Navbar.Content>
