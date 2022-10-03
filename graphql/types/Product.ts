@@ -64,7 +64,7 @@ export const ProductsQuery = extendType({
       type: ProductConnection,
       args: {
         first: "Int",
-        after: "String",
+        after: "Int",
       },
       resolve: async (_, args, ctx) => {
         let queryResults = null;
@@ -91,25 +91,25 @@ export const ProductsQuery = extendType({
           });
 
           const result = {
-            edges: secondQueryResults.map((product) => ({
-              cursor: product.id,
-              node: product,
-            })),
             pageInfo: {
               endCursor: myCursor,
               hasNextPage: secondQueryResults.length >= args.first,
             },
+            edges: queryResults.map((product) => ({
+              cursor: product.id,
+              node: product,
+            })),
           };
 
           return result;
         }
 
         return {
-          edges: [],
           pageInfo: {
             endCursor: null,
             hasNextPage: false,
           },
+          edges: [],
         };
       },
     });
