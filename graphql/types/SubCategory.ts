@@ -5,6 +5,9 @@ export const SubCategory = objectType({
   definition(t) {
     t.int("id");
     t.string("name");
+    t.field("category", { type: "Category" });
+    t.int("categoryId");
+    t.list.field("products", { type: "Product" });
   },
 });
 
@@ -14,7 +17,11 @@ export const getAllSubCategories = extendType({
     t.nonNull.list.field("subCategories", {
       type: "SubCategory",
       resolve(_parent, _args, ctx) {
-        return ctx.prisma.subCategory.findMany();
+        return ctx.prisma.subCategory.findMany({
+          include: {
+            products: true,
+          },
+        });
       },
     });
   },
