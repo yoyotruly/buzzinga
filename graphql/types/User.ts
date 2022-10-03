@@ -1,5 +1,4 @@
 import { extendType, objectType } from "nexus";
-import { Product } from "./Product";
 
 export const User = objectType({
   name: "User",
@@ -9,18 +8,8 @@ export const User = objectType({
     t.string("name");
     t.string("createdAt");
     t.string("updatedAt");
-    t.list.field("favorites", {
-      type: Product,
-      async resolve(parent, _args, ctx) {
-        return await ctx.prisma.user
-          .findUnique({
-            where: {
-              id: parent.id,
-            },
-          })
-          .favoriteProducts();
-      },
-    });
+    t.list.field("favoriteProducts", { type: "Favorite" });
+    t.list.field("wishlistProducts", { type: "Wishlist" });
   },
 });
 
@@ -34,6 +23,18 @@ export const getCurrentUser = extendType({
         return ctx.prisma.user.findUnique({
           where: {
             id: args.id,
+          },
+          include: {
+            favoriteProducts: {
+              include: {
+                product: true,
+              },
+            },
+            wishlistProducts: {
+              include: {
+                product: true,
+              },
+            },
           },
         });
       },
