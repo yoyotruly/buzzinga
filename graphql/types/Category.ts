@@ -5,16 +5,23 @@ export const Category = objectType({
   definition(t) {
     t.int("id");
     t.string("name");
+    t.list.field("subCategories", { type: "SubCategory" });
+    t.list.field("products", { type: "Product" });
   },
 });
 
-export const CategoriesQuery = extendType({
+export const getAllCategoriesQuery = extendType({
   type: "Query",
   definition(t) {
     t.nonNull.list.field("categories", {
       type: "Category",
       resolve(_parent, _args, ctx) {
-        return ctx.prisma.category.findMany();
+        return ctx.prisma.category.findMany({
+          include: {
+            subCategories: true,
+            products: true,
+          },
+        });
       },
     });
   },
