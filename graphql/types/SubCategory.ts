@@ -3,7 +3,7 @@ import { extendType, objectType } from "nexus";
 export const SubCategory = objectType({
   name: "SubCategory",
   definition(t) {
-    t.string("id");
+    t.int("id");
     t.string("name");
   },
 });
