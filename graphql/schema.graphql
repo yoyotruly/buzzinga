@@ -3,7 +3,7 @@
 
 
 type Category {
-  id: String
+  id: Int
   name: String
 }
 
@@ -13,12 +13,10 @@ type Edge {
 }
 
 type Favorite {
-  id: Int
-  product: String
+  product: Product
   productId: Int
-  user: String
+  user: User
   userId: Int
-  wishlist: Boolean
 }
 
 type PageInfo {
@@ -52,20 +50,33 @@ type ProductConnection {
 
 type Query {
   categories: [Category]!
+  currentUser(id: Int): User
+  favorites: [Favorite]
   favoritesByUserId(userId: Int): [Favorite]
-  products(after: String, first: Int): ProductConnection
+  products(after: Int, first: Int): ProductConnection
   subCategories: [SubCategory]!
   subCategoriesByCategoryId(categoryId: Int): [SubCategory]
+  wishlistByUserId(userId: Int): [Wishlist]
+  wishlists: [Wishlist]
 }
 
 type SubCategory {
-  id: String
+  id: Int
   name: String
 }
 
 type User {
+  createdAt: String
   email: String
   favorites: [Product]
-  id: String
+  id: Int
   name: String
+  updatedAt: String
+}
+
+type Wishlist {
+  product: Product
+  productId: Int
+  user: User
+  userId: Int
 }
