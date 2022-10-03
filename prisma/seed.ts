@@ -11,12 +11,7 @@ async function main() {
   });
 
   await prisma.category.createMany({
-    data: [
-      { name: "Beer" },
-      { name: "Cider" },
-      { name: "Wine" },
-      { name: "Coolers" },
-    ],
+    data: [{ name: "Beer" }, { name: "Cider" }, { name: "Coolers" }],
   });
 
   await prisma.subCategory.createMany({
@@ -24,13 +19,12 @@ async function main() {
       { name: "Lager", categoryId: 1 },
       { name: "Ale", categoryId: 1 },
       { name: "Radler", categoryId: 1 },
-      { name: "Red Wine", categoryId: 3 },
-      { name: "White Wine", categoryId: 3 },
-      { name: "Rose Wine", categoryId: 3 },
-      { name: "Seltzer", categoryId: 4 },
-      { name: "Cocktail", categoryId: 4 },
-      { name: "Iced Tea", categoryId: 4 },
-      { name: "Caesars", categoryId: 4 },
+      { name: "Flavored Cider", categoryId: 2 },
+      { name: "Traditional Cider", categoryId: 2 },
+      { name: "Seltzer", categoryId: 3 },
+      { name: "Cocktail", categoryId: 3 },
+      { name: "Iced Tea", categoryId: 3 },
+      { name: "Caesars", categoryId: 3 },
     ],
   });
 
@@ -46,7 +40,7 @@ async function main() {
         description: "A delicious beer",
         alcohol: 5.5,
         madeIn: "Ontario, Canada",
-        brand: "Cowbell Brewing Co.",
+        by: "Cowbell Brewing Co.",
         categoryId: 1,
         subCategoryId: 1,
       },
@@ -61,7 +55,7 @@ async function main() {
           "Have you always wanted to help animals by drinking beer? Well, now you can! Peterborough's Publican House teamed up with the local Humane Society to create Our Pet Project. Proceeds from this crisp German-style pilsner support the campaign to build the new Peterborough Animal Care Centre. Goes great with a belly-rub.",
         alcohol: 5.0,
         madeIn: "Ontario, Canada",
-        brand: "Publican House",
+        by: "Publican House",
         categoryId: 1,
         subCategoryId: 1,
       },
@@ -76,7 +70,7 @@ async function main() {
           "The next in Muskoka's Big World Small Batch collaborative series, this one with Germany's Orca Brau in Bavaria. Pale gold colour, with fresh bread dough aromas and light toasty notes. Soft grainy sweetness on the palate, balanced by herbal and spicy notes and a crisp finish. Perfect with Schnitzel or Bratwursts.",
         alcohol: 5.0,
         madeIn: "Ontario, Canada",
-        brand: "Muskoka",
+        by: "Muskoka",
         categoryId: 1,
         subCategoryId: 1,
       },
@@ -115,7 +109,7 @@ async function main() {
           "Clear gold in colour with a thin head; aromas of apple, brown sugar and cinnamon on the nose. The palate is light with lively carbonation and subtle sweetness followed by a short and crisp finish.",
         alcohol: 5.3,
         madeIn: "United Kingdom",
-        brand: "Strongbow",
+        by: "Strongbow",
         categoryId: 2,
       },
       {
@@ -129,7 +123,7 @@ async function main() {
           "Duntroon Cyder House produces traditional English ciders using only hand-picked heritage apples and prefers the old English spelling of 'cyder'. This cloudy farm-style cider is infused with rhubarb and has fresh aromas of ripe red apples and citrus zest. The gently sweet finish and rich texture pair well with Chef's Salad.",
         alcohol: 5.5,
         madeIn: "Ontario, Canada",
-        brand: "Duntroon",
+        by: "Duntroon",
         categoryId: 2,
       },
       {
@@ -143,9 +137,9 @@ async function main() {
           "Clean and on trend, this vodka soda starts out with smooth premium craft vodka, adds soda water, natural grapefruit flavour and...nothing else! Refreshing notes of ruby grapefruit carried by light carbonation meet a clean finish. Enjoy with veggies and dip; serve in a Collins glass full of ice with a citrus spiral garnish.",
         alcohol: 5,
         madeIn: "Ontario, Canada",
-        brand: "Nutrl",
-        categoryId: 4,
-        subCategoryId: 7,
+        by: "Nutrl",
+        categoryId: 3,
+        subCategoryId: 6,
       },
     ],
   });
@@ -154,6 +148,13 @@ async function main() {
     data: [
       { userId: 1, productId: 1 },
       { userId: 1, productId: 6 },
+      { userId: 1, productId: 7 },
+    ],
+  });
+
+  await prisma.wishlist.createMany({
+    data: [
+      { userId: 1, productId: 2 },
       { userId: 1, productId: 7 },
       { userId: 1, productId: 8 },
     ],
