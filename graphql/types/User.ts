@@ -18,13 +18,13 @@ export const User = objectType({
               id: parent.id,
             },
           })
-          .favorites();
+          .favoriteProducts();
       },
     });
   },
 });
 
-export const CurrentUserQuery = extendType({
+export const getCurrentUser = extendType({
   type: "Query",
   definition(t) {
     t.field("currentUser", {
